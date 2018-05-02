@@ -9,3 +9,10 @@ html {
 body {
   height: 100%;
 }
+/*scr-theme*/
+.mCustomScrollBox.mCS-scr-theme > .mCSB_container {
+  margin-right: 6px;
+}
+.mCustomScrollBox.mCS-scr-theme > .mCSB_scrollTools{
+  width: 10px;
+}

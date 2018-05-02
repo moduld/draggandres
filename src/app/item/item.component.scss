@@ -1,6 +1,78 @@
+$gray: #bfbfbf;
+$light-green: #2ae5b4;
+$black: #0e0915;
+$transition: 0.3s;
+$common-margin: 3px;
+
 :host {
   display: block;
-  width: 50%;
-  border: 1px solid black;
-  height: 100px;
+  width: 95%;
+  border: 3px solid $gray;
+  height: 300px;
+  font-family: sans-serif;
+  background-color: $gray;
+  font-size: 16px;
+}
+.header {
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  background-color: white;
+  color: $gray;
+  height: 45px;
+  margin: $common-margin $common-margin 0;
+}
+.drag {
+  color: $light-green;
+  font-size: 18px;
+}
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 10px 0 5px;
+  color: $black;
+}
+.edit {
+  color: $light-green;
+  font-size: 12px;
+  font-weight: bold;
+  transform: translateY(2px);
+}
+.icons-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.icon {
+  padding: 5px;
+  font-size: 18px;
+  transition: $transition;
+  cursor: pointer;
+  &:hover {
+    color: $black;
+  }
+}
+.tabel-wrapper {
+  max-height: calc(100% - 48px);
+  width: 100%;
+}
+table, th, td {
+  border: $common-margin solid $gray;
+  border-collapse: collapse;
+}
+.tabel-body {
+  width: 100%;
+  background-color: white;
+  tr {
+    height: 20px;
+  }
+  th {
+    width: 10%;
+  }
+}
+.tabel-cell {
+  display: block;
+  padding: 6px;
+  text-align: left;
 }

@@ -4,13 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ItemComponent } from './item/item.component';
 import { Draggable } from './directives/draggable.directive';
+import { ScrollDirective } from './directives/scroll.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemComponent,
-    Draggable
+    Draggable,
+    ScrollDirective
   ],
   imports: [
     BrowserModule
