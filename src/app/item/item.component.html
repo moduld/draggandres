@@ -1,95 +1,101 @@
-<div class="header">
-  <span class="drag icon-dots-three-vertical"></span>
-  <span class="title">Countries</span>
-  <span class="edit">Edit</span>
-  <div class="icons-wrapper">
-    <span class="icon icon-search"></span>
-    <span class="icon icon-plus-square-o" (click)="addNewOne()"></span>
-    <span class="icon icon-folder-open-o"></span>
-    <span class="icon icon-close"></span>
+<div ng2-draggable
+     [heighVal]="heihtValue"
+     [headerHeight]="headerHeight"
+     [emitter]="heightChanged"
+     class="main-wrapper">
+    <div class="header" #headerHeight>
+      <span class="drag icon-dots-three-vertical"></span>
+      <span class="title">Countries</span>
+      <span class="edit">Edit</span>
+      <div class="icons-wrapper">
+        <span class="icon icon-search"></span>
+        <span class="icon icon-plus-square-o" (click)="addNewOneString()"></span>
+        <span class="icon icon-folder-open-o"></span>
+        <span class="icon icon-close"></span>
+      </div>
+    </div>
+    <div class="tabel-wrapper" appScroll [emitter]="heightChanged">
+      <table class="tabel-body" #heihtValue>
+        <tr>
+          <td>
+            <span class="tabel-cell icon-arrow_drop_down">Name</span>
+          </td>
+          <td>
+            <span class="tabel-cell icon-arrow_drop_down">Auctions</span>
+          </td>
+          <td>
+            <span class="tabel-cell icon-arrow_drop_down">Requests</span>
+          </td>
+          <td>
+            <span class="tabel-cell icon-arrow_drop_down">Bids</span>
+          </td>
+          <td>
+            <span class="tabel-cell icon-arrow_drop_down">Views</span>
+          </td>
+          <td>
+            <span class="tabel-cell icon-arrow_drop_down">Clicks</span>
+          </td>
+          <td>
+            <span class="tabel-cell icon-arrow_drop_down">CTR</span>
+          </td>
+          <td>
+            <span class="tabel-cell icon-arrow_drop_down">CPC</span>
+          </td>
+        </tr>
+        <tr *ngFor="let row of data">
+          <td>
+            <span class="tabel-cell">{{row.name}}</span>
+          </td>
+          <td>
+            <span class="tabel-cell">{{row.c1}}</span>
+          </td>
+          <td>
+            <span class="tabel-cell">{{row.c2}}</span>
+          </td>
+          <td>
+            <span class="tabel-cell">{{row.c3}}</span>
+          </td>
+          <td>
+            <span class="tabel-cell">{{row.c4}}</span>
+          </td>
+          <td>
+            <span class="tabel-cell">{{row.c5}}</span>
+          </td>
+          <td>
+            <span class="tabel-cell">{{row.c6}}</span>
+          </td>
+          <td>
+            <span class="tabel-cell">{{row.c7}}</span>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <span class="tabel-cell">Total</span>
+          </th>
+          <th>
+            <span class="tabel-cell">{{calculate('c1')}}</span>
+          </th>
+          <th>
+            <span class="tabel-cell">{{calculate('c2')}}</span>
+          </th>
+          <th>
+            <span class="tabel-cell">{{calculate('c3')}}</span>
+          </th>
+          <th>
+            <span class="tabel-cell">{{calculate('c4')}}</span>
+          </th>
+          <th>
+            <span class="tabel-cell">{{calculate('c5')}}</span>
+          </th>
+          <th>
+            <span class="tabel-cell">{{calculate('c6')}}</span>
+          </th>
+          <th>
+            <span class="tabel-cell">{{calculate('c7')}}</span>
+          </th>
+        </tr>
+
+      </table>
+
   </div>
 </div>
-<div class="tabel-wrapper" appScroll>
-  <table class="tabel-body">
-    <tr>
-      <td>
-        <span class="tabel-cell icon-arrow_drop_down">Name</span>
-      </td>
-      <td>
-        <span class="tabel-cell icon-arrow_drop_down">Auctions</span>
-      </td>
-      <td>
-        <span class="tabel-cell icon-arrow_drop_down">Requests</span>
-      </td>
-      <td>
-        <span class="tabel-cell icon-arrow_drop_down">Bids</span>
-      </td>
-      <td>
-        <span class="tabel-cell icon-arrow_drop_down">Views</span>
-      </td>
-      <td>
-        <span class="tabel-cell icon-arrow_drop_down">Clicks</span>
-      </td>
-      <td>
-        <span class="tabel-cell icon-arrow_drop_down">CTR</span>
-      </td>
-      <td>
-        <span class="tabel-cell icon-arrow_drop_down">CPC</span>
-      </td>
-    </tr>
-    <tr *ngFor="let row of data">
-      <td>
-        <span class="tabel-cell">{{row.name}}</span>
-      </td>
-      <td>
-        <span class="tabel-cell">{{row.c1}}</span>
-      </td>
-      <td>
-        <span class="tabel-cell">{{row.c2}}</span>
-      </td>
-      <td>
-        <span class="tabel-cell">{{row.c3}}</span>
-      </td>
-      <td>
-        <span class="tabel-cell">{{row.c4}}</span>
-      </td>
-      <td>
-        <span class="tabel-cell">{{row.c5}}</span>
-      </td>
-      <td>
-        <span class="tabel-cell">{{row.c6}}</span>
-      </td>
-      <td>
-        <span class="tabel-cell">{{row.c7}}</span>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <span class="tabel-cell">Total</span>
-      </th>
-      <th>
-        <span class="tabel-cell">{{calculate('c1')}}</span>
-      </th>
-      <th>
-        <span class="tabel-cell">{{calculate('c2')}}</span>
-      </th>
-      <th>
-        <span class="tabel-cell">{{calculate('c3')}}</span>
-      </th>
-      <th>
-        <span class="tabel-cell">{{calculate('c4')}}</span>
-      </th>
-      <th>
-        <span class="tabel-cell">{{calculate('c5')}}</span>
-      </th>
-      <th>
-        <span class="tabel-cell">{{calculate('c6')}}</span>
-      </th>
-      <th>
-        <span class="tabel-cell">{{calculate('c7')}}</span>
-      </th>
-    </tr>
-
-  </table>
-</div>
-

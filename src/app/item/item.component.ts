@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-item',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements OnInit {
+
+  heightChanged: EventEmitter<null> = new EventEmitter<null>();
 
   data = [
     {
@@ -91,7 +93,7 @@ export class ItemComponent implements OnInit {
     }, 0);
   }
 
-  addNewOne(): void {
+  addNewOneString(): void {
     this.data.push({
       name: 'New one',
       c1: 123123,
@@ -103,5 +105,4 @@ export class ItemComponent implements OnInit {
       c7: 648890
     })
   }
-
 }

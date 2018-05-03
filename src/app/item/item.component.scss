@@ -6,12 +6,16 @@ $common-margin: 3px;
 
 :host {
   display: block;
+  height: 100%;
+}
+.main-wrapper {
   width: 95%;
   border: 3px solid $gray;
   height: 300px;
   font-family: sans-serif;
   background-color: $gray;
   font-size: 16px;
+  position: fixed;
 }
 .header {
   padding: 0 8px;
