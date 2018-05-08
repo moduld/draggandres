@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter} from '@angular/core';
+import { Component, OnInit, ViewChild, Input, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-item',
@@ -7,7 +7,11 @@ import { Component, OnInit, EventEmitter} from '@angular/core';
 })
 export class ItemComponent implements OnInit {
 
-  heightChanged: EventEmitter<null> = new EventEmitter<null>();
+  @Input() elem: any;
+  @ViewChild('headerHeight') headerHeight: any;
+  @ViewChild('tableHeight') tableHeight: any;
+  reloadScroll: EventEmitter<any> = new EventEmitter<any>();
+  @Output() closeTable: EventEmitter<any> = new EventEmitter<any>();
 
   data = [
     {
@@ -85,6 +89,14 @@ export class ItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.elem.emitter.next({flag: 'fromComponent',header: this.headerHeight.nativeElement.clientHeight, tabel: this.tableHeight.nativeElement.clientHeight})
+    }, 0);
+    this.elem.emitter.subscribe((data) => {
+      if (data.flag === 'fromDirective') {
+        this.reloadScroll.emit(data)
+      }
+    })
   }
 
   calculate(key: string): number {
@@ -103,6 +115,13 @@ export class ItemComponent implements OnInit {
       c5: 9087667,
       c6: 5435,
       c7: 648890
-    })
+    });
+    setTimeout(() => {
+      this.elem.emitter.next({flag: 'fromComponent',header: this.headerHeight.nativeElement.clientHeight, tabel: this.tableHeight.nativeElement.clientHeight})
+    }, 0);
+  }
+
+  close(): void {
+    this.closeTable.emit(this.elem.ind)
   }
 }

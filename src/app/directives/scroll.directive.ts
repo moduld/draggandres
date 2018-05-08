@@ -1,12 +1,12 @@
 import { Directive, ElementRef, OnInit, Input, EventEmitter } from '@angular/core';
-declare var $;
+declare let $;
 
 @Directive({
   selector: '[appScroll]'
 })
 export class ScrollDirective implements OnInit {
 
-  @Input() emitter: EventEmitter<null>;
+  @Input() reloadScroll: EventEmitter<null>;
   element = $(this.elementRef.nativeElement);
 
   constructor(private elementRef: ElementRef) { }
@@ -14,7 +14,7 @@ export class ScrollDirective implements OnInit {
   ngOnInit(): void {
    this.setScroll();
 
-    this.emitter.subscribe(() => {
+    this.reloadScroll.subscribe(() => {
       this.element.mCustomScrollbar("destroy");
       this.setScroll();
     })

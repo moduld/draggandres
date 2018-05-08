@@ -1,8 +1,4 @@
-<div ng2-draggable
-     [heighVal]="heihtValue"
-     [headerHeight]="headerHeight"
-     [emitter]="heightChanged"
-     class="main-wrapper">
+<div class="main-wrapper">
     <div class="header" #headerHeight>
       <span class="drag icon-dots-three-vertical"></span>
       <span class="title">Countries</span>
@@ -11,11 +7,11 @@
         <span class="icon icon-search"></span>
         <span class="icon icon-plus-square-o" (click)="addNewOneString()"></span>
         <span class="icon icon-folder-open-o"></span>
-        <span class="icon icon-close"></span>
+        <span class="icon icon-close" (click)="close()"></span>
       </div>
     </div>
-    <div class="tabel-wrapper" appScroll [emitter]="heightChanged">
-      <table class="tabel-body" #heihtValue>
+    <div class="tabel-wrapper" appScroll [reloadScroll]="reloadScroll">
+      <table class="tabel-body" #tableHeight>
         <tr>
           <td>
             <span class="tabel-cell icon-arrow_drop_down">Name</span>
@@ -94,8 +90,6 @@
             <span class="tabel-cell">{{calculate('c7')}}</span>
           </th>
         </tr>
-
       </table>
-
   </div>
 </div>
